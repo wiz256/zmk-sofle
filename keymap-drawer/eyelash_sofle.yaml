@@ -28,17 +28,17 @@ layers:
   - P
   - {t: \, s: '|'}
   - $$mdi:apple-keyboard-caps$$
-  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
-  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
-  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
-  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
-  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
-  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
-  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
-  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
-  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '''', s: '"'}
   - $$mdi:apple-keyboard-shift$$
   - Z
@@ -58,9 +58,9 @@ layers:
   - $$mdi:backspace-reverse-outline$$
   - {t: '$$mdi:keyboard-tab$$', h: layer1}
   - $$mdi:keyboard-space$$
-  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - {t: '$$mdi:keyboard-esc$$', h: '2'}
   - {t: '$$mdi:backspace$$', type: backspace}
