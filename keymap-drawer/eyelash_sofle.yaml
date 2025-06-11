@@ -28,17 +28,17 @@ layers:
   - P
   - {t: \, s: '|'}
   - $$mdi:apple-keyboard-caps$$
-  - A
-  - S
-  - D
-  - F
-  - G
+  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
+  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
+  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
+  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
+  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - H
-  - J
-  - K
-  - L
-  - {t: ;, s: ':'}
+  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
+  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
+  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
+  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
+  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
   - {t: '''', s: '"'}
   - $$mdi:apple-keyboard-shift$$
   - Z
@@ -54,17 +54,17 @@ layers:
   - {t: /, s: '?'}
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - $$mdi:apple-keyboard-control$$
-  - $$mdi:apple-keyboard-command$$
-  - $$mdi:apple-keyboard-option$$
-  - layer1
-  - $$mdi:keyboard-space$$
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - $$mdi:keyboard-space$$
-  - {t: '$$mdi:keyboard-return$$', type: enter}
-  - '2'
-  - $$mdi:apple-keyboard-shift$$
+  - {t: '$$mdi:menu-left$$', s: '$$mdi:mouse$$'}
   - $$mdi:backspace-reverse-outline$$
+  - {t: '$$mdi:keyboard-tab$$', h: layer1}
+  - $$mdi:keyboard-space$$
+  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', h: '$$mdi:minus-circle-outline$$'}
+  - {t: '$$mdi:keyboard-return$$', type: enter}
+  - {t: '$$mdi:keyboard-esc$$', h: '2'}
+  - {t: '$$mdi:backspace$$', type: backspace}
+  - {t: '$$mdi:menu-right$$', s: '$$mdi:mouse$$'}
   layer1:
   - {t: '`', s: '~'}
   - F1
@@ -121,8 +121,8 @@ layers:
   - $$mdi:volume-off$$
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
   - {type: held}
+  - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - $$mdi:mouse-left-click-outline$$
   - {t: '$$mdi:transfer$$', type: trans}
