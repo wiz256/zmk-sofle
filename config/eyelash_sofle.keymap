@@ -26,6 +26,11 @@
     trigger-period-ms = <16>;
 };
 
+&mt {
+    tapping-term-ms = <250>;
+    quick-tap-ms = <0>;
+};
+
 / {
     scroll_encoder: scroll_encoder {
         compatible = "zmk,behavior-sensor-rotate";
@@ -33,17 +38,6 @@
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
 
         tap-ms = <100>;
-    };
-
-    mt: mt {
-        compatible = "zmk,behavior-hold-tap";
-        label = "MT";
-        bindings = <&none>, <&none>;
-
-        #binding-cells = <2>;
-        tapping-term-ms = <248>;
-        flavor = "tap-preferred";
-        quick-tap-ms = <0>;
     };
 
     behaviors {
@@ -54,11 +48,11 @@
 
         layer0 {
             bindings = <
-&kp ESC    &kp N1          &kp N2          &kp N3              &kp N4            &kp N5                         &none  &kp N6                         &kp N7            &kp N8               &kp N9           &kp N0              &kp BACKSPACE
-&kp TAB    &kp Q           &kp W           &kp E               &kp R             &kp T                          &none  &kp Y                          &kp U             &kp I                &kp O            &kp P               &kp BSLH
-&kp CAPS   &mt LGUI A      &mt LEFT_ALT S  &mt LEFT_CONTROL D  &mt LEFT_SHIFT F  &mt LEFT_ALT G                 &none  &mt RIGHT_ALT H                &mt LEFT_SHIFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L  &mt RIGHT_GUI SEMI  &kp APOS
-&kp LSHFT  &kp Z           &kp X           &kp C               &kp V             &kp B                          &none  &kp N                          &kp M             &kp COMMA            &kp DOT          &kp FSLH            &kp ENTER
-&none      &mmv MOVE_LEFT  &kp DEL         &lt 1 TAB           &kp SPACE         &mt LEFT_BRACKET LEFT_BRACE    &none  &mt RIGHT_BRACKET RIGHT_BRACE  &kp ENTER         &lt 2 ESC            &kp BACKSPACE    &mmv MOVE_RIGHT
+&kp ESC    &kp N1          &kp N2   &kp N3     &kp N4     &kp N5    &none  &kp N6  &kp N7     &kp N8     &kp N9         &kp N0           &kp BACKSPACE
+&kp TAB    &kp Q           &kp W    &kp E      &kp R      &kp T     &none  &kp Y   &kp U      &kp I      &kp O          &kp P            &kp BSLH
+&kp CAPS   &none           &none    &none      &none      &none     &none  &none   &none      &none      &none          &none            &kp APOS
+&kp LSHFT  &kp Z           &kp X    &kp C      &kp V      &kp B     &none  &kp N   &kp M      &kp COMMA  &kp DOT        &kp FSLH         &kp ENTER
+&none      &mmv MOVE_LEFT  &kp DEL  &lt 1 TAB  &kp SPACE  &none     &none  &none   &kp ENTER  &lt 2 ESC  &kp BACKSPACE  &mmv MOVE_RIGHT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
