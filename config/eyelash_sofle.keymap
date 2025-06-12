@@ -26,14 +26,15 @@
 
         layer0 {
             bindings = <
-&kp ESC    &kp N1          &kp N2          &kp N3              &kp N4            &kp N5                         &none  &kp N6                         &kp N7             &kp N8               &kp N9           &kp N0              &kp EQUAL
-&kp TAB    &kp Q           &kp W           &kp E               &kp R             &kp T                          &none  &kp Y                          &kp U              &kp I                &kp O            &kp P               &kp BSLH
-&kp CAPS   &mt LEFT_GUI A  &mt LEFT_ALT S  &mt LEFT_CONTROL D  &mt LEFT_SHIFT F  &mt LEFT_ALT G                 &none  &mt RIGHT_ALT H                &mt RIGHT_SHIFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L  &mt RIGHT_GUI SEMI  &kp APOS
-&kp LSHFT  &kp Z           &kp X           &kp C               &kp V             &kp B                          &none  &kp N                          &kp M              &kp COMMA            &kp DOT          &kp FSLH            &kp ENTER
-&none      &mmv MOVE_LEFT  &kp DEL         &lt 1 TAB           &kp SPACE         &mt LEFT_BRACKET LEFT_BRACE    &none  &mt RIGHT_BRACKET RIGHT_BRACE  &kp ENTER          &lt 2 ESC            &kp BACKSPACE    &mmv MOVE_RIGHT
+&kp ESC    &kp N1          &kp N2          &kp N3              &kp N4            &kp N5                         &trans  &kp N6                         &kp N7             &kp N8               &kp N9           &kp N0              &kp EQUAL
+&kp TAB    &kp Q           &kp W           &kp E               &kp R             &kp T                          &trans  &kp Y                          &kp U              &kp I                &kp O            &kp P               &kp BSLH
+&kp CAPS   &mt LEFT_GUI A  &mt LEFT_ALT S  &mt LEFT_CONTROL D  &mt LEFT_SHIFT F  &mt LEFT_ALT G                 &trans  &mt RIGHT_ALT H                &mt RIGHT_SHIFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L  &mt RIGHT_GUI SEMI  &kp APOS
+&kp LSHFT  &kp Z           &kp X           &kp C               &kp V             &kp B                          &trans  &kp N                          &kp M              &kp COMMA            &kp DOT          &kp FSLH            &kp ENTER
+&trans     &mmv MOVE_LEFT  &kp DEL         &lt 1 TAB           &kp SPACE         &mt LEFT_BRACKET LEFT_BRACE    &trans  &mt RIGHT_BRACKET RIGHT_BRACE  &kp ENTER          &lt 2 ESC            &kp BACKSPACE    &mmv MOVE_RIGHT
             >;
 
             display-name = "LAYER0";
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
 
         layer_1 {
@@ -46,7 +47,7 @@
             >;
 
             display-name = "layer1";
-            sensor-bindings = <&none>;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
 
         layer_2 {
@@ -58,7 +59,7 @@
 &trans     &trans        &trans          &trans        &trans        &trans          &mkp LCLK        &trans  &trans  &trans      &trans     &trans
             >;
 
-            sensor-bindings = <&none>;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
 
         layer_3 {
