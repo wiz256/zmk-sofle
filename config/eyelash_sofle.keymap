@@ -14,48 +14,25 @@
 
 &msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
 
-&msc {
-    acceleration-exponent = <1>;      // 0
-    time-to-max-speed-ms = <100>;       // 300
-    delay-ms = <0>;                   // 0
-};
-
-&mmv {
-    time-to-max-speed-ms = <500>;
-    acceleration-exponent = <1>;
-    trigger-period-ms = <16>;
-};
-
 &mt {
-    tapping-term-ms = <250>;
+    tapping-term-ms = <400>;
     quick-tap-ms = <0>;
+    flavor = "tap-preferred";
 };
 
 / {
-    scroll_encoder: scroll_encoder {
-        compatible = "zmk,behavior-sensor-rotate";
-        #sensor-binding-cells = <0>;
-        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-
-        tap-ms = <100>;
-    };
-
-    behaviors {
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
         layer0 {
             bindings = <
-&kp ESC    &kp N1          &kp N2          &kp N3              &kp N4            &kp N5                         &none  &kp N6                         &kp N7             &kp N8               &kp N9           &kp N0              &kp BACKSPACE
+&kp ESC    &kp N1          &kp N2          &kp N3              &kp N4            &kp N5                         &none  &kp N6                         &kp N7             &kp N8               &kp N9           &kp N0              &kp EQUAL
 &kp TAB    &kp Q           &kp W           &kp E               &kp R             &kp T                          &none  &kp Y                          &kp U              &kp I                &kp O            &kp P               &kp BSLH
 &kp CAPS   &mt LEFT_GUI A  &mt LEFT_ALT S  &mt LEFT_CONTROL D  &mt LEFT_SHIFT F  &mt LEFT_ALT G                 &none  &mt RIGHT_ALT H                &mt RIGHT_SHIFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L  &mt RIGHT_GUI SEMI  &kp APOS
 &kp LSHFT  &kp Z           &kp X           &kp C               &kp V             &kp B                          &none  &kp N                          &kp M              &kp COMMA            &kp DOT          &kp FSLH            &kp ENTER
 &none      &mmv MOVE_LEFT  &kp DEL         &lt 1 TAB           &kp SPACE         &mt LEFT_BRACKET LEFT_BRACE    &none  &mt RIGHT_BRACKET RIGHT_BRACE  &kp ENTER          &lt 2 ESC            &kp BACKSPACE    &mmv MOVE_RIGHT
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
             display-name = "LAYER0";
         };
 
@@ -69,7 +46,7 @@
             >;
 
             display-name = "layer1";
-            sensor-bindings = <&scroll_encoder>;
+            sensor-bindings = <&none>;
         };
 
         layer_2 {
@@ -81,7 +58,7 @@
 &trans     &trans        &trans          &trans        &trans        &trans          &mkp LCLK        &trans  &trans  &trans      &trans     &trans
             >;
 
-            sensor-bindings = <&scroll_encoder>;
+            sensor-bindings = <&none>;
         };
 
         layer_3 {
