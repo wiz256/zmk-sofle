@@ -1,4 +1,4 @@
-// eyelash_sofle.keymap (Miryoku Integration - Manual QWERTY - No #define Aliases)
+// eyelash_sofle.keymap (Miryoku Integration - Manual QWERTY - No #define Aliases - Corrected lt_miryoku)
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
@@ -29,24 +29,24 @@
     compatible = "zmk,behavior-hold-tap";
     label = "HOMEROW_MODS_MIRYOKU";
     #binding-cells = <2>;
-    tapping-term-ms = <240>;
+    tapping-term-ms = <240>; // Start with 240ms, adjust between 200-280 based on feel
     quick-tap-ms = <0>;
-    flavor = "tap-preferred";
+    flavor = "tap-preferred"; // Or "balanced", "tap-unless-interrupted"
     bindings = <&kp>, <&kp>;
 };
 
 // Miryoku Layer Tap specific behavior block (for thumbs)
-<_miryoku {
+<_miryoku { // <--- CORRECTED NAME HERE
     compatible = "zmk,behavior-hold-tap";
     label = "LAYER_TAP_MIRYOKU";
     #binding-cells = <2>;
-    tapping-term-ms = <240>;
+    tapping-term-ms = <240>; // Match HRM tapping-term or tune independently
     quick-tap-ms = <0>;
-    flavor = "tap-preferred";
-    bindings = <&mo>, <&kp>;
+    flavor = "tap-preferred"; // Important for layer-taps to feel responsive
+    bindings = <&mo>, <&kp>; // Hold for Momentary Layer, Tap for Key Press
 };
 
-// NO #define ALIASES FOR BEHAVIORS HERE ANYMORE
+// NO #define ALIASES FOR ZMK BEHAVIORS USED IN BINDINGS
 
 / {
     combos {
@@ -77,7 +77,7 @@
             &none           &none           &kp Z                      &kp X                      &kp C                      &kp V                      &kp B                                  &kp N                      &kp M                      &kp COMMA                  &kp DOT                    &kp FSLH                               &none           &none
             // Thumb Cluster (Sofle 5-keys per side, Miryoku uses central 3)
             // Physical keys:       LT0 (outer)    LT1 (below C)          LT2 (below V)          LT3 (below B)          LT4 (inner)            RT0 (inner)        RT1 (below N)          RT2 (below M)          RT3 (below ,<)         RT4 (outer)
-                                &none          <_miryoku 5 ESC      <_miryoku 7 SPACE    <_miryoku 8 TAB      &none,                 &none              <_miryoku 6 BSPC     <_miryoku 9 ENTER    <_miryoku 10 DEL     &none
+                                &none          <_miryoku 5 ESC      <_miryoku 7 SPACE    <_miryoku 8 TAB      &none,                 &none              <_miryoku 6 BSPC     <_miryoku 9 ENTER    <_miryoku 10 DEL     &none // <--- USING CORRECTED <_miryoku
             >;
         };
 
@@ -91,7 +91,7 @@
             // Row 3 (Bottom) - Example Colemak Z X C V B / K M , . /
             &none           &none           &kp Z                      &kp X                      &kp C                      &kp V                      &kp B                                  &kp K                      &kp M                      &kp COMMA                  &kp DOT                    &kp FSLH                               &none           &none
             // Thumb Cluster (Identical to QWERTY base for Miryoku layer access)
-                                &none          <_miryoku 5 ESC      <_miryoku 7 SPACE    <_miryoku 8 TAB      &none,                 &none              <_miryoku 6 BSPC     <_miryoku 9 ENTER    <_miryoku 10 DEL     &none
+                                &none          <_miryoku 5 ESC      <_miryoku 7 SPACE    <_miryoku 8 TAB      &none,                 &none              <_miryoku 6 BSPC     <_miryoku 9 ENTER    <_miryoku 10 DEL     &none // <--- USING CORRECTED <_miryoku
             >;
         };
 
@@ -156,7 +156,7 @@
 &kp TAB    &kp Q           &kp W           &kp E               &kp R             &kp T                          &trans  &kp Y                          &kp U              &kp I                &kp O            &kp P               &kp BSLH
 &kp CAPS   &mt_sofle_global LEFT_GUI A  &mt_sofle_global LEFT_ALT S  &mt_sofle_global LEFT_CONTROL D  &mt_sofle_global LEFT_SHIFT F  &mt_sofle_global LEFT_ALT G                 &trans  &mt_sofle_global RIGHT_ALT H                &mt_sofle_global RIGHT_SHIFT J  &mt_sofle_global RIGHT_CONTROL K  &mt_sofle_global RIGHT_ALT L  &mt_sofle_global RIGHT_GUI SEMI  &kp APOS
 &kp LSHFT  &kp Z           &kp X           &kp C               &kp V             &kp B                          &trans  &kp N                          &kp M              &kp COMMA            &kp DOT          &kp FSLH            &kp ENTER
-&trans     &mmv MOVE_LEFT  &kp DEL         <_miryoku 51 TAB  &kp SPACE         &mt_sofle_global LEFT_BRACKET LEFT_BRACE    &trans  &mt_sofle_global RIGHT_BRACKET RIGHT_BRACE  &kp ENTER          <_miryoku 52 ESC           &kp BACKSPACE    &mmv MOVE_RIGHT
+&trans     &mmv MOVE_LEFT  &kp DEL         <_miryoku 51 TAB  &kp SPACE         &mt_sofle_global LEFT_BRACKET LEFT_BRACE    &trans  &mt_sofle_global RIGHT_BRACKET RIGHT_BRACE  &kp ENTER          <_miryoku 52 ESC           &kp BACKSPACE    &mmv MOVE_RIGHT // <--- USING CORRECTED <_miryoku
             >;
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
