@@ -54,7 +54,7 @@ layers:
   - {t: /, s: '?'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - GLOBE
   - {t: '$$mdi:keyboard-esc$$', h: Miryoku-Media}
   - {t: '$$mdi:keyboard-space$$', h: Miryoku-Nav}
   - {t: '$$mdi:keyboard-tab$$', h: Miryoku-Mouse}
@@ -62,8 +62,8 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:keyboard-return$$', h: Miryoku-Sym}
-  - {t: '$$mdi:backspace$$', h: Miryoku-Num}
-  - {t: '$$mdi:backspace-reverse-outline$$', h: Miryoku-Fun}
+  - {t: '$$mdi:keyboard-space$$', h: Miryoku-Num}
+  - {t: '$$mdi:backspace$$', h: Miryoku-Fun}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   Miryoku-Media:
   - {t: '$$mdi:transfer$$', type: trans}
