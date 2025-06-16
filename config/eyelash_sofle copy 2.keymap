@@ -1,0 +1,199 @@
+// eyelash_sofle.keymap (Miryoku Integration - Manual QWERTY - No #define Aliases - Corrected lt_miryoku)
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/modifiers.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/backlight.h>
+#include <dt-bindings/zmk/pointing.h>
+#include <input/processors.dtsi>
+
+// Define pointing device scaling
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1200
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 25
+
+&mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
+&msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
+
+// Your existing global &mt block (can be used for non-Miryoku mod-taps on Sofle extended keys)
+&mt_sofle_global {
+    tapping-term-ms = <400>;
+    quick-tap-ms = <0>;
+    flavor = "tap-preferred";
+};
+
+// Miryoku Home Row Mod specific behavior block
+&hm_miryoku {
+    compatible = "zmk,behavior-hold-tap";
+    label = "HOMEROW_MODS_MIRYOKU";
+    #binding-cells = <2>;
+    tapping-term-ms = <240>; // Start with 240ms, adjust between 200-280 based on feel
+    quick-tap-ms = <0>;
+    flavor = "tap-preferred"; // Or "balanced", "tap-unless-interrupted"
+    bindings = <&kp>, <&kp>;
+};
+
+// Miryoku Layer Tap specific behavior block (for thumbs)
+<_miryoku { // <--- CORRECTED NAME HERE
+    compatible = "zmk,behavior-hold-tap";
+    label = "LAYER_TAP_MIRYOKU";
+    #binding-cells = <2>;
+    tapping-term-ms = <240>; // Match HRM tapping-term or tune independently
+    quick-tap-ms = <0>;
+    flavor = "tap-preferred"; // Important for layer-taps to feel responsive
+    bindings = <&mo>, <&kp>; // Hold for Momentary Layer, Tap for Key Press
+};
+
+// NO #define ALIASES FOR ZMK BEHAVIORS USED IN BINDINGS
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+        combo_miryoku_adj {
+            timeout-ms = <50>;
+            // KEY POSITIONS FOR SOFLE: LT3 (inner-left Miryoku thumb) + RT1 (inner-right Miryoku thumb)
+            // Assuming LT3 (below B) is key 25, RT1 (below N) is key 54. VERIFY THIS!
+            key-positions = <25 54>; // <--- YOU MUST VERIFY THESE NUMBERS
+            bindings = <&mo 11>;    // Momentarily activate miryoku_layer_adjust (layer 11)
+            layers = <0 1>;         // Only active on miryoku_base_qwerty (0) and miryoku_base_colemak_dh (1)
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        // --- Miryoku Base Layers ---
+        miryoku_base_qwerty { // LAYER 0 (New Default)
+            label = "M_QWERTY";
+            bindings = <
+            // Sofle OuterL | Sofle InnerL | Miryoku QWERTY Core (3x6 for Sofle example)                                                                                             | Sofle InnerR | Sofle OuterR
+            // Row 1 (Top)
+            &none           &none           &kp Q                      &kp W                      &kp E                      &kp R                      &kp T                                  &kp Y                      &kp U                      &kp I                      &kp O                      &kp P                                  &none           &none
+            // Row 2 (Home)
+            &none           &none           &hm_miryoku LGUI A         &hm_miryoku LALT S         &hm_miryoku LCTL D         &hm_miryoku LSHFT F        &kp G                                  &kp H                      &hm_miryoku RSHFT J        &hm_miryoku RCTL K         &hm_miryoku RALT L         &hm_miryoku RGUI SEMI                  &none           &none
+            // Row 3 (Bottom)
+            &none           &none           &kp Z                      &kp X                      &kp C                      &kp V                      &kp B                                  &kp N                      &kp M                      &kp COMMA                  &kp DOT                    &kp FSLH                               &none           &none
+            // Thumb Cluster (Sofle 5-keys per side, Miryoku uses central 3)
+            // Physical keys:       LT0 (outer)    LT1 (below C)          LT2 (below V)          LT3 (below B)          LT4 (inner)            RT0 (inner)        RT1 (below N)          RT2 (below M)          RT3 (below ,<)         RT4 (outer)
+                                &none          <_miryoku 5 ESC      <_miryoku 7 SPACE    <_miryoku 8 TAB      &none,                 &none              <_miryoku 6 BSPC     <_miryoku 9 ENTER    <_miryoku 10 DEL     &none // <--- USING CORRECTED <_miryoku
+            >;
+        };
+
+        miryoku_base_colemak_dh { // LAYER 1 (Example placeholder)
+            label = "M_COLEMAK";
+            bindings = <
+            // Row 1 (Top) - Example Colemak Q W F P G / J L U Y ;
+            &none           &none           &kp Q                      &kp W                      &hm_miryoku LCTL F         &hm_miryoku LSHFT P        &kp G                                  &kp J                      &hm_miryoku RSHFT L        &hm_miryoku RCTL U         &hm_miryoku RALT Y         &hm_miryoku RGUI SEMI                  &none           &none
+            // Row 2 (Home) - Example Colemak A R S T D / H N E I O
+            &none           &none           &hm_miryoku LGUI A         &hm_miryoku LALT R         &hm_miryoku LCTL S         &hm_miryoku LSHFT T        &kp D                                  &kp H                      &hm_miryoku RSHFT N        &hm_miryoku RCTL E         &hm_miryoku RALT I         &hm_miryoku RGUI O                     &none           &none
+            // Row 3 (Bottom) - Example Colemak Z X C V B / K M , . /
+            &none           &none           &kp Z                      &kp X                      &kp C                      &kp V                      &kp B                                  &kp K                      &kp M                      &kp COMMA                  &kp DOT                    &kp FSLH                               &none           &none
+            // Thumb Cluster (Identical to QWERTY base for Miryoku layer access)
+                                &none          <_miryoku 5 ESC      <_miryoku 7 SPACE    <_miryoku 8 TAB      &none,                 &none              <_miryoku 6 BSPC     <_miryoku 9 ENTER    <_miryoku 10 DEL     &none // <--- USING CORRECTED <_miryoku
+            >;
+        };
+
+        // --- Standard Miryoku Momentary Layers (Indices 5-11) ---
+        // YOU MUST FILL THESE IN FROM A STANDARD MIRYOKU ZMK KEYMAP REFERENCE
+        // Ensure all alpha key positions are &trans
+        // Ensure keys outside the Miryoku 3x6 (or 3x5) grid are &none
+
+        miryoku_layer_nav { // LAYER 5 (Nav - Accessed by LT1 hold)
+            label = "M_NAV";
+            bindings = <
+            // Example structure - fill from Miryoku reference for a 3x6 grid
+            &none           &none           &kp C_PREV     &kp HOME       &kp UP         &kp END        &kp PG_UP          &kp LCTL(LS(TAB)) &kp LCTL(TAB) &kp LALT(LEFT) &kp LALT(RIGHT) &kp C_NEXT         &none           &none
+            &none           &none           &kp C_PP       &kp LEFT       &kp DOWN       &kp RIGHT      &kp PG_DN          &trans            &trans         &trans         &trans         &trans             &none           &none
+            &none           &none           &kp C_VOL_DN   &kp LCTL(Z)    &kp LCTL(X)    &kp LCTL(C)    &kp LCTL(V)        &trans            &trans         &trans         &trans         &trans             &none           &none
+                                &none          &trans         &trans         &trans         &none,             &none          &trans         &trans         &trans         &none
+            >;
+        };
+
+        miryoku_layer_mouse { // LAYER 6 (Mouse - Accessed by RT1 hold)
+            label = "M_MOUSE";
+            bindings = < /* Fill from Miryoku reference. Use &mmv, &msc, &mkp. Alphas &trans. Outside keys &none. */ >;
+        };
+
+        miryoku_layer_sym { // LAYER 7 (Symbol - Accessed by LT2 hold)
+            label = "M_SYM";
+            bindings = < /* Fill from Miryoku reference. Alphas &trans. Outside keys &none. */ >;
+        };
+
+        miryoku_layer_num { // LAYER 8 (Number - Accessed by LT3 hold)
+            label = "M_NUM";
+            bindings = < /* Fill from Miryoku reference. Alphas &trans. Outside keys &none. */ >;
+        };
+
+        miryoku_layer_fun { // LAYER 9 (Function - Accessed by RT2 hold)
+            label = "M_FUN";
+            bindings = < /* Fill from Miryoku reference (F-keys). Alphas &trans. Outside keys &none. */ >;
+        };
+
+        miryoku_layer_media { // LAYER 10 (Media - Accessed by RT3 hold)
+            label = "M_MEDIA";
+            bindings = < /* Fill from Miryoku reference (Media keys). Alphas &trans. Outside keys &none. */ >;
+        };
+
+        miryoku_layer_adjust { // LAYER 11 (Accessed by combo LT3+RT1)
+            label = "M_ADJUST";
+            bindings = <
+            // Example structure - fill from Miryoku reference (RGB, BT, &df switches, &bootloader etc.)
+            &none           &none           &df 0          &df 1          &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2       &bt BT_CLR     &bt BT_CLR_ALL &out OUT_USB   &out OUT_BLE   &out OUT_TOG       &none           &none
+            &none           &none           &rgb_ug RGB_TOG &rgb_ug HUI    &rgb_ug HUD    &rgb_ug SAI    &rgb_ug SAD        &bt BT_SEL 3   &bt BT_SEL 4   &trans         &trans         &trans             &none           &none
+            &none           &none           &bootloader    &sys_reset     &eeprom_reset  &rgb_ug BRI    &rgb_ug BRD        &df 50         &trans         &trans         &trans         &trans             &none           &none // &df 50 is "Switch to Original Sofle QWERTY"
+                                &none          &trans         &trans         &trans         &none,             &none          &trans         &trans         &trans         &none
+            >;
+        };
+
+
+        // --- BACKUP of Your Original Sofle Layers (Shifted to high layer numbers) ---
+        bak_layer_0_sofle_original { // LAYER 50
+            label = "BAK_SOFLE_QWERTY";
+            bindings = <
+&kp ESC    &kp N1          &kp N2          &kp N3              &kp N4            &kp N5                         &trans  &kp N6                         &kp N7             &kp N8               &kp N9           &kp N0              &kp EQUAL
+&kp TAB    &kp Q           &kp W           &kp E               &kp R             &kp T                          &trans  &kp Y                          &kp U              &kp I                &kp O            &kp P               &kp BSLH
+&kp CAPS   &mt_sofle_global LEFT_GUI A  &mt_sofle_global LEFT_ALT S  &mt_sofle_global LEFT_CONTROL D  &mt_sofle_global LEFT_SHIFT F  &mt_sofle_global LEFT_ALT G                 &trans  &mt_sofle_global RIGHT_ALT H                &mt_sofle_global RIGHT_SHIFT J  &mt_sofle_global RIGHT_CONTROL K  &mt_sofle_global RIGHT_ALT L  &mt_sofle_global RIGHT_GUI SEMI  &kp APOS
+&kp LSHFT  &kp Z           &kp X           &kp C               &kp V             &kp B                          &trans  &kp N                          &kp M              &kp COMMA            &kp DOT          &kp FSLH            &kp ENTER
+&trans     &mmv MOVE_LEFT  &kp DEL         <_miryoku 51 TAB  &kp SPACE         &mt_sofle_global LEFT_BRACKET LEFT_BRACE    &trans  &mt_sofle_global RIGHT_BRACKET RIGHT_BRACE  &kp ENTER          <_miryoku 52 ESC           &kp BACKSPACE    &mmv MOVE_RIGHT // <--- USING CORRECTED <_miryoku
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
+        };
+
+        bak_layer_1_sofle_original { // LAYER 51
+            label = "BAK_SOFLE_L1";
+            bindings = <
+&kp GRAVE   &kp F1           &kp F2          &kp F3           &kp F4           &kp F5             &mmv MOVE_UP     &kp F6           &kp F7           &kp F8      &kp F9     &kp F10           &trans
+&trans      &kp GRAVE        &mkp LCLK       &mkp MCLK        &mkp RCLK        &mkp MB4           &mmv MOVE_DOWN   &kp PG_UP        &kp END          &kp UP      &kp HOME   &kp MINUS         &kp EQUAL
+&trans      &kp TILDE        &trans          &trans           &trans           &mkp MB5           &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT         &kp DOWN    &kp RIGHT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
+&trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI    &mmv MOVE_RIGHT  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp INSERT  &kp F11    &kp F12           &trans
+&kp C_MUTE  &trans           &trans          &trans           &trans           &trans             &mkp LCLK        &trans           &trans           &trans      &trans     &trans
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
+        };
+
+        bak_layer_2_sofle_original { // LAYER 52
+            label = "BAK_SOFLE_L2";
+            bindings = <
+&kp TILDE  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &mmv MOVE_UP     &kp F6  &kp F7  &kp F8      &kp F9     &kp F10      &trans
+&trans     &bt BT_CLR    &bt BT_CLR_ALL  &trans        &trans        &trans          &mmv MOVE_DOWN   &trans  &trans  &kp F11     &kp F12    &kp UNDER    &kp PLUS
+&trans     &out OUT_USB  &out OUT_BLE    &trans        &trans        &trans          &mmv MOVE_LEFT   &trans  &trans  &trans      &trans     &kp LBRC     &kp RBRC
+&trans     &sys_reset    &trans          &bootloader   &trans        &trans          &mmv MOVE_RIGHT  &trans  &trans  &sys_reset  &soft_off  &bootloader  &trans
+&trans     &bl BL_ON     &bl BL_OFF      &trans        &trans        &trans          &mkp LCLK        &trans  &trans  &trans      &trans     &trans
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
+        };
+
+        bak_layer_3_sofle_original { // LAYER 53 (Empty backup)
+            label = "BAK_SOFLE_L3";
+            bindings = <
+            // Ensuring 14 columns per side for Sofle like other layers, even if mostly &trans or &none
+            &trans,&trans,&trans,&trans,&trans,&trans,&trans,  &trans,&trans,&trans,&trans,&trans,&trans,&trans
+            &trans,&trans,&trans,&trans,&trans,&trans,&trans,  &trans,&trans,&trans,&trans,&trans,&trans,&trans
+            &trans,&trans,&trans,&trans,&trans,&trans,&trans,  &trans,&trans,&trans,&trans,&trans,&trans,&trans
+                               &trans,        &trans,        &trans,        &trans,        &trans,             &trans,        &trans,        &trans,        &trans,        &trans
+            >;
+        };
+    };
+};
