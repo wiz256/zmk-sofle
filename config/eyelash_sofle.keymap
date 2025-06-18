@@ -22,7 +22,7 @@
 };
 
 &lt {
-    flavor = "balanced";
+    flavor = "tap-preferred";
     tapping-term-ms = <220>;
 };
 
@@ -31,7 +31,7 @@
         compatible = "zmk,combos";
 
         bl_enc {
-            bindings = <&bl BL_INC>;
+            bindings = <&kp ESCAPE>;
             key-positions = <0 1 0 1>;
         };
     };
@@ -64,11 +64,11 @@
 
         Miryoku-Nav {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans         &trans    &trans         &trans       &trans      &kp BACKSPACE
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp PAGE_UP    &kp HOME  &kp UP_ARROW   &kp END      &kp DELETE  &kp PAGE_UP
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp PAGE_DOWN  &kp LEFT  &kp DOWN       &kp RIGHT    &trans      &kp PAGE_DOWN
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp INSERT     &kp HOME  &kp PAGE_DOWN  &kp PAGE_UP  &kp END     &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans         &trans    &trans         &trans       &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans         &trans    &trans        &trans     &trans      &kp BACKSPACE
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp PAGE_UP    &kp HOME  &kp UP_ARROW  &kp END    &kp DELETE  &kp PAGE_UP
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp PAGE_DOWN  &kp LEFT  &kp DOWN      &kp RIGHT  &trans      &kp PAGE_DOWN
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp INSERT     &trans    &trans        &trans     &trans      &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans         &trans    &trans        &trans     &trans
             >;
         };
 
@@ -78,7 +78,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp LS(LG(Z))  &kp LG(V)       &mmv MOVE_UP    &kp LG(X)        &kp LG(Z)  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans         &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans     &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans         &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT  &trans     &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &mkp MB4       &mkp MCLK       &mkp LCLK       &mkp RCLK        &mkp MB5
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &mkp MB4       &mkp MB5        &mkp LCLK       &mkp MCLK        &mkp RCLK
             >;
         };
 
